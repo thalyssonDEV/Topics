@@ -2,8 +2,6 @@
 
 Este projeto compara o desempenho de 4 algoritmos de classificação (Regressão Logística, k-NN, Árvore de Decisão e Random Forest) em 3 bases de dados distintas, conforme solicitado na atividade.
 
-O objetivo é carregar os dados, pré-processá-los, treinar os modelos, avaliar as métricas e analisar os resultados e fronteiras de decisão.
-
 ## Execução
 
 1.  **Dependências:**
@@ -19,7 +17,7 @@ O objetivo é carregar os dados, pré-processá-los, treinar os modelos, avaliar
     ```bash
     python main.py
     ```
-    * O script criará um diretório `plots/` e salvará todas as matrizes de confusão e gráficos de fronteiras como arquivos `.png`, sem bloquear a execução.
+    * O script criará um diretório `plots/` e salvará todas as matrizes de confusão e gráficos de fronteiras como arquivos `.png`.
 
 ---
 
@@ -42,19 +40,6 @@ O objetivo é carregar os dados, pré-processá-los, treinar os modelos, avaliar
     * **Melhor Desempenho:** O Random Forest (Acurácia 0.96, ROC-AUC 0.99) foi o modelo vencedor, lidando muito bem com o alto número de features.
     * **Onde mais errou:** A Regressão Logística teve o pior desempenho (Acurácia 0.77), errando principalmente em identificar a classe positiva (Recall de 0.65).
 
-* **Matrizes de Confusão:**
-    <p align="center">
-      <img src="plots/Covertype_Logistic_Regression_CM.png" width="23%">
-      <img src="plots/Covertype_k-NN_(k=5)_CM.png" width="23%">
-      <img src="plots/Covertype_Decision_Tree_(Depth=10)_CM.png" width="23%">
-      <img src="plots/Covertype_Random_Forest_(100_Trees)_CM.png" width="23%">
-    </p>
-
-* **Fronteiras de Decisão (Features: Elevation vs Aspect):**
-    <img src="plots/Covertype_Fronteiras.png" width="100%">
-
----
-
 ### 2. Adult / Census Income
 
 * **Dataset:** ~48 mil amostras, 14 features (processadas para 108 com OHE).
@@ -71,19 +56,6 @@ O objetivo é carregar os dados, pré-processá-los, treinar os modelos, avaliar
 * **Comentários:**
     * **Melhor Desempenho:** A Regressão Logística obteve o maior ROC-AUC (0.9069), indicando a melhor capacidade de separação entre as classes. A Árvore de Decisão e o Random Forest tiveram o melhor F1-Score (0.67) para a classe positiva.
     * **Onde mais errou:** Todos os modelos tiveram dificuldade em identificar a classe positiva (renda >50K). O erro principal foi o baixo Recall (entre 0.59 e 0.62), classificando erroneamente muitas pessoas de alta renda como se fossem de baixa renda.
-
-* **Matrizes de Confusão:**
-    <p align="center">
-      <img src="plots/Adult_Logistic_Regression_CM.png" width="23%">
-      <img src="plots/Adult_k-NN_(k=5)_CM.png" width="23%">
-      <img src="plots/Adult_Decision_Tree_(Depth=10)_CM.png" width="23%">
-      <img src="plots/Adult_Random_Forest_(100_Trees)_CM.png" width="23%">
-    </p>
-
-* **Fronteiras de Decisão (Features: age vs hours-per-week):**
-    <img src="plots/Adult_Fronteiras.png" width="100%">
-
----
 
 ### 3. Credit Card Fraud
 
@@ -102,14 +74,3 @@ O objetivo é carregar os dados, pré-processá-los, treinar os modelos, avaliar
     * **Melhor Desempenho (Detecção):** A Regressão Logística com balanceamento de classe foi a melhor em *identificar* fraudes (Recall de 0.88), como visto no `ROC-AUC` (0.97).
     * **Melhor Desempenho (Equilíbrio):** O Random Forest (F1 0.82) e o k-NN (F1 0.81) foram os modelos mais equilibrados, com alta precisão e recall razoável.
     * **Onde mais errou:** A Regressão Logística errou ao gerar um volume extremo de Falsos Positivos (Precisão de 0.07). Os outros modelos (k-NN, RF) erraram ao deixar passar mais fraudes (Falsos Negativos), falhando em detectar ~27-29% delas.
-
-* **Matrizes de Confusão:**
-    <p align="center">
-      <img src="plots/Credit_Card_Logistic_Regression_CM.png" width="23%">
-      <img src="plots/Credit_Card_k-NN_(k=5)_CM.png" width="23%">
-      <img src="plots/Credit_Card_Decision_Tree_(Depth=10)_CM.png" width="23%">
-      <img src="plots/Credit_Card_Random_Forest_(100_Trees)_CM.png" width="23%">
-    </p>
-
-* **Fronteiras de Decisão (Features: V1 vs V2):**
-    <img src="plots/Credit_Card_Fronteiras.png" width="100%">
